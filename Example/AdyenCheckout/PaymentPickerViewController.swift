@@ -16,6 +16,8 @@ class PaymentPickerViewController: LoadingTableViewController {
     
     var adyenAPI: Adyen?
     var payment: Payment?
+    
+    var safariViewController: SFSafariViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,33 @@ class PaymentPickerViewController: LoadingTableViewController {
         
         tableView.registerClass(LoadingTableViewCell.classForCoder(), forCellReuseIdentifier: "cell")
         
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: Selector("receivedUrlNotification"),
+            name: openUrlNotification,
+            object: nil)
+        
         fetchPayments()
+    }
+    
+    func receivedUrlNotification() {
+        guard let viewController = safariViewController else {
+            return
+        }
+        
+        viewController.dismissViewControllerAnimated(true) { 
+//            self.dismissViewControllerAnimated(false, completion: nil)
+            
+            let alertController = UIAlertController(
+                title: "Payment Result URL",
+                message: receivedUrl?.absoluteString,
+                preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (_) in
+                alertController.dismissViewControllerAnimated(true, completion: nil)
+            }))
+                
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +88,11 @@ class PaymentPickerViewController: LoadingTableViewController {
             
             self.paymentMethods = paymentMethods
             self.loading = false
-            self.tableView.reloadData()
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.tableView.reloadData()
+            })
+            
         }
 
     }
@@ -183,9 +215,9 @@ extension PaymentPickerViewController {
                     return
                 }
                 
-                let viewController = SFSafariViewController(URL: url)
-                viewController.modalPresentationStyle = .FormSheet
-                self.presentViewController(viewController, animated: true, completion: nil)
+                self.safariViewController = SFSafariViewController(URL: url)
+                self.safariViewController?.modalPresentationStyle = .FormSheet
+                self.presentViewController(self.safariViewController!, animated: true, completion: nil)
         }
         
     }

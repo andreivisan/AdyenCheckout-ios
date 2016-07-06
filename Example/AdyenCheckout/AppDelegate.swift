@@ -8,6 +8,9 @@
 
 import UIKit
 
+let openUrlNotification = "openUrlNotification"
+var receivedUrl: NSURL?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -34,4 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
     }
 
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        receivedUrl = url
+        NSNotificationCenter.defaultCenter().postNotificationName(openUrlNotification, object: nil)
+        return true
+    }
+    
 }
