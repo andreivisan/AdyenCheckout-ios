@@ -27,6 +27,9 @@
 		67282C95F23DAFA1456376E17AEE3985 /* TKAESCCMCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = A133796EAA274842D5E89EB9CBC984E0 /* TKAESCCMCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D4D000AD61B8A74C778861E744A8AA5 /* CheckoutCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F9CEA42FD37B5309A110E780BA69D3 /* CheckoutCardViewController.swift */; };
 		734139F009FD291BE5B7B8168C6A956C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		7CDF2B661D267C5700EB1951 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B651D267C5700EB1951 /* Payment.swift */; };
+		7CDF2B681D267C6900EB1951 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B671D267C6900EB1951 /* PaymentMethod.swift */; };
+		7CDF2B6A1D267C7C00EB1951 /* Adyen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDF2B691D267C7C00EB1951 /* Adyen.swift */; };
 		8780A74B7381E7337A44F9A457D4B88E /* CheckoutPaymentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4408DB36217B0DAA9E8CF288A4C01145 /* CheckoutPaymentButton.swift */; };
 		88AC40C319A08C57EB32819609BA7508 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		B48E00C99123B71CD4F8CEA0CC17395F /* Pods-AdyenCheckout_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BF0D089C2E90354A67B128BFCE7F915 /* Pods-AdyenCheckout_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,6 +87,9 @@
 		7612D9E9274C6799AD23151AA650B07F /* CheckoutApplePay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutApplePay.swift; sourceTree = "<group>"; };
 		76F9CEA42FD37B5309A110E780BA69D3 /* CheckoutCardViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckoutCardViewController.swift; sourceTree = "<group>"; };
 		7BF0D089C2E90354A67B128BFCE7F915 /* Pods-AdyenCheckout_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AdyenCheckout_Tests-umbrella.h"; sourceTree = "<group>"; };
+		7CDF2B651D267C5700EB1951 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		7CDF2B671D267C6900EB1951 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		7CDF2B691D267C7C00EB1951 /* Adyen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adyen.swift; sourceTree = "<group>"; };
 		804833A7455539FF8EAE327CF7FBED11 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B727BA9C874C283C884BA2E7ABA6A94 /* TKCryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TKCryptor.h; sourceTree = "<group>"; };
 		8E070BF580689B73E1884159A2E9C06D /* Pods-AdyenCheckout_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AdyenCheckout_Example.modulemap"; sourceTree = "<group>"; };
@@ -234,6 +240,16 @@
 			path = "Target Support Files/Pods-AdyenCheckout_Example";
 			sourceTree = "<group>";
 		};
+		7CDF2B621D267C2600EB1951 /* DirectoryLookup */ = {
+			isa = PBXGroup;
+			children = (
+				7CDF2B651D267C5700EB1951 /* Payment.swift */,
+				7CDF2B671D267C6900EB1951 /* PaymentMethod.swift */,
+				7CDF2B691D267C7C00EB1951 /* Adyen.swift */,
+			);
+			name = DirectoryLookup;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +294,7 @@
 		CAE06417D621A39458F89A88D39FA8E4 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
+				7CDF2B621D267C2600EB1951 /* DirectoryLookup */,
 				2AF18B894D49A79F09305D3D74CC8155 /* ADYCryptor.swift */,
 				D171625D5C2D593F6749BFB0F0A8D5E0 /* ADYRSACryptor.swift */,
 				330F7B17041C30E1D7FC5C3899681A4E /* Checkout.swift */,
@@ -447,6 +464,7 @@
 				0A16AB3531573E4E26A02F1A16CBFD34 /* ADYCryptor.swift in Sources */,
 				063E338573B0DADF2F3258BD2778E090 /* AdyenCheckout-dummy.m in Sources */,
 				258CD94F8676341638DCD973CFA61F0D /* ADYRSACryptor.swift in Sources */,
+				7CDF2B681D267C6900EB1951 /* PaymentMethod.swift in Sources */,
 				31C8DE67BD38CE23557F618F0B5834BB /* Checkout.swift in Sources */,
 				E941B541C01AF07CF7C485E9FDB099E7 /* CheckoutApplePay.swift in Sources */,
 				D653F8A49206A0FC8BDC772451A2D5F5 /* CheckoutCard.swift in Sources */,
@@ -457,8 +475,10 @@
 				8780A74B7381E7337A44F9A457D4B88E /* CheckoutPaymentButton.swift in Sources */,
 				630879ACE12366EC6E7DE8C7AD0222BD /* CheckoutPaymentFieldView.swift in Sources */,
 				620A905367B2CA54D0E68E68E14A6A2B /* CheckoutRequest.swift in Sources */,
+				7CDF2B661D267C5700EB1951 /* Payment.swift in Sources */,
 				24320EE9551A8285565104F33BCB26FE /* CheckoutUI.swift in Sources */,
 				6427C9C1FC0EF43180B80677A6BC9640 /* CheckoutViewController.swift in Sources */,
+				7CDF2B6A1D267C7C00EB1951 /* Adyen.swift in Sources */,
 				5EED2C39CBB7F2CBCE4B9402ED122221 /* TKAESCCMCryptor.m in Sources */,
 				119E6783A85FD9D48D1868BBCE6FCB7D /* TKCryptor.m in Sources */,
 				66988CD855BBA2A91A4B4EF56CA07A14 /* TKRSACryptor.m in Sources */,
