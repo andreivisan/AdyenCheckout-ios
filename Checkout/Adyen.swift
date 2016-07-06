@@ -193,12 +193,7 @@ public class Adyen: NSObject {
             request.HTTPBody = query?.dataUsingEncoding(NSUTF8StringEncoding)
             
             self.session.dataTaskWithRequest(request, completionHandler: { (data, response, error) in
-                let log = String(data: data!, encoding: NSUTF8StringEncoding)
-                print(response?.URL)
-                
-                
-                completionHandler(response?.URL, error)
-                
+                completionHandler(response?.URL, error)                
             }).resume()
             
         }.resume()
